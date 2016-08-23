@@ -1,0 +1,21 @@
+<%= form_for(@tweet, url: confirm_tweets_path) do |f| %>
+<% if @tweet.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @tweet.errors.count %>件のエラーがあります。</h2>
+
+    <ul>
+    <% @tweet.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<br>
+<%= f.label "What's Tweet" %>
+<%= f.text_field :content, class: 'form-control' %>
+<br>
+<%= f.submit 'Tweet', class: 'btn btn-primary btn-block' %>
+<% end %>
+
+
+<%= link_to "Back Timeline", tweets_path %>
